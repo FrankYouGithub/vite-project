@@ -1,15 +1,15 @@
 /*
  * @Author       : frank
  * @Date         : 2022-04-14 10:50:48
- * @LastEditTime : 2022-04-14 12:36:44
+ * @LastEditTime : 2022-04-18 11:35:57
  * @LastEditors  : frank
  * @Description  : In User Settings Edit
  */
 import { useState } from 'react'
-import logo from './logo.svg'
+import logo from '@assets/logo.svg';
 import './App.css'
 import {Header} from './components/Header'
-
+import { version } from '../package.json';
 function App() {
   const [count, setCount] = useState(0)
 
@@ -43,7 +43,7 @@ function App() {
             target="_blank"
             rel="noopener noreferrer"
           >
-            Vite Docs
+            Vite Docs {version}
           </a>
         </p>
       </header>

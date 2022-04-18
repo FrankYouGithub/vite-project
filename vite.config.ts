@@ -1,7 +1,7 @@
 /*
  * @Author       : frank
  * @Date         : 2022-04-14 10:50:48
- * @LastEditTime : 2022-04-14 13:18:40
+ * @LastEditTime : 2022-04-18 12:51:16
  * @LastEditors  : frank
  * @Description  : In User Settings Edit
  */
@@ -10,12 +10,23 @@ import path from 'path';
 import react from '@vitejs/plugin-react'
 import autoprefixer from 'autoprefixer';
 import windi from "vite-plugin-windicss";
-
+import svgr from 'vite-plugin-svgr';
+// 是否为生产环境，在生产环境一般会注入 NODE_ENV 这个环境变量，见下面的环境变量文件配置
+const isProduction = process.env.NODE_ENV === 'production';
+// 填入项目的 CDN 域名地址
+const CDN_URL = 'xxxxxx';
 const variablePath = normalizePath(path.resolve('./src/variable.scss'));
 
 // https://vitejs.dev/config/
 export default defineConfig({
   root: path.join(__dirname, 'src'),
+  base: isProduction ? CDN_URL: '/',
+  resolve: {
+    // 别名配置
+    alias: {
+      '@assets': path.join(__dirname, 'src/assets')
+    }
+  },
   plugins: [
     react({
       babel: {
@@ -33,7 +44,8 @@ export default defineConfig({
       // 通过 `@emotion/react` 包编译 emotion 中的特殊 jsx 语法
       jsxImportSource: "@emotion/react"
     }),
-    windi()
+    windi(),
+    svgr()
   ],
   css: {
     modules: {
