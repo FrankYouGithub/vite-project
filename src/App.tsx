@@ -1,16 +1,21 @@
 /*
  * @Author       : frank
  * @Date         : 2022-04-14 10:50:48
- * @LastEditTime : 2022-04-19 11:23:46
+ * @LastEditTime : 2022-05-14 17:18:48
  * @LastEditors  : frank
  * @Description  : In User Settings Edit
  */
+import logo from '@assets/logo.svg';
 import { useState } from 'react';
-import Logo1 from '@assets/icons/logo-1.svg';
-import Logo2 from '@assets/icons/logo-2.svg';
-import Logo3 from '@assets/icons/logo-3.svg';
-import Logo4 from '@assets/icons/logo-4.svg';
-import Logo5 from '@assets/icons/logo-5.svg';
+import { version } from '../package.json';
+import './App.css';
+import { Header } from './components/Header';
+import SvgIcon from './components/SvgIcon';
+// import Logo1 from '@assets/icons/logo-1.svg';
+// import Logo2 from '@assets/icons/logo-2.svg';
+// import Logo3 from '@assets/icons/logo-3.svg';
+// import Logo4 from '@assets/icons/logo-4.svg';
+// import Logo5 from '@assets/icons/logo-5.svg';
 const icons = import.meta.globEager('./assets/icons/logo-*.svg');
 const iconUrls = Object.values(icons).map(mod => {
   // 如 ../../assets/icons/logo-1.svg -> logo-1
@@ -18,11 +23,6 @@ const iconUrls = Object.values(icons).map(mod => {
   const [svgName] = fileName.split('.');
   return svgName;
 });
-import logo from '@assets/logo.svg';
-import './App.css';
-import { Header } from './components/Header';
-import SvgIcon from './components/SvgIcon';
-import { version } from '../package.json';
 function App() {
   const [count, setCount] = useState(0);
 

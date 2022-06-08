@@ -1,11 +1,11 @@
 /*
  * @Author       : frank
  * @Date         : 2022-04-14 12:34:32
- * @LastEditTime : 2022-04-19 11:20:22
+ * @LastEditTime : 2022-05-14 17:18:41
  * @LastEditors  : frank
  * @Description  : In User Settings Edit
  */
-import styles from './index.module.scss';
+// import styles from './index.module.scss';
 import { devDependencies } from '../../../package.json';
 import Worker from './example.js?worker';
 

@@ -5,16 +5,17 @@
  * @LastEditors  : frank
  * @Description  : In User Settings Edit
  */
-import { defineConfig, normalizePath } from 'vite';
-import path from 'path';
+import viteStylelint from '@amatlash/vite-plugin-stylelint';
 import react from '@vitejs/plugin-react';
 import autoprefixer from 'autoprefixer';
-import windi from 'vite-plugin-windicss';
-import svgr from 'vite-plugin-svgr';
+import path from 'path';
+import { defineConfig, normalizePath } from 'vite';
+import viteEslint from 'vite-plugin-eslint';
 import viteImagemin from 'vite-plugin-imagemin';
 import { createSvgIconsPlugin } from 'vite-plugin-svg-icons';
-import viteEslint from 'vite-plugin-eslint';
-import viteStylelint from '@amatlash/vite-plugin-stylelint';
+import svgr from 'vite-plugin-svgr';
+import windi from 'vite-plugin-windicss';
+import testHookPlugin from './test-hooks-plugin';
 // 是否为生产环境，在生产环境一般会注入 NODE_ENV 这个环境变量，见下面的环境变量文件配置
 const isProduction = process.env.NODE_ENV === 'production';
 // 填入项目的 CDN 域名地址
@@ -78,7 +79,8 @@ export default defineConfig({
     }),
     createSvgIconsPlugin({
       iconDirs: [path.join(__dirname, 'src/assets/icons')]
-    })
+    }),
+    testHookPlugin()
   ],
   css: {
     modules: {
